@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
 
     task_id: {
-        type: mongoose.Schema.Types.ObjectId, ref : 'task',
+        type: mongoose.Schema.Types.ObjectId, ref: 'task',
         required: true,
     },
     title: {

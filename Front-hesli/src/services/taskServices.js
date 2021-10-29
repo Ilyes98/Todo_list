@@ -32,7 +32,7 @@ export function getItemFromTask(id) {
     return axios.get(apiUrl + "/item/" + id);
 }
 
-export function  updateItem(id, task) {
+export function updateItem(id, task) {
     return axios.put(apiUrl + "/item/" + id, task);
 }
 export function deleteItem(id) {

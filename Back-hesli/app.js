@@ -11,11 +11,6 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerOptions = {
     swaggerDefinition: {
         info: {
-            title: "Bus APP ",
-            description: "Backend Api",
-            contact: {
-                name: 'Amazing Developer'
-            },
             servers: "http://localhost:3333"
         }
     },

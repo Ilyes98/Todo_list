@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
     try {
-        const tasks = await Task.find({_id: req.id});
+        const tasks = await Task.find({ _id: req.id });
         res.send(tasks);
     } catch (error) {
         res.send(error);
@@ -43,7 +43,7 @@ router.get("/item", async (req, res) => {
 router.post("/item", async (req, res) => {
     try {
         const item = await new Item(req.body).save();
-        console.log("Regarde : "+req.body);
+        console.log("Regarde : " + req.body);
         res.send(item);
     } catch (error) {
         res.send(error);
@@ -51,7 +51,7 @@ router.post("/item", async (req, res) => {
 });
 router.get("/item/:id", async (req, res) => {
     try {
-        const tasks = await Item.find({task_id: req.params.id});
+        const tasks = await Item.find({ task_id: req.params.id });
         res.send(tasks);
     } catch (error) {
         res.send(error);
@@ -61,7 +61,7 @@ router.get("/item/:id", async (req, res) => {
 router.patch("/item/:id", async (req, res) => {
     try {
         const task = await Item.findOneAndUpdate(
-             req.params.id,
+            req.params.id,
             req.body
         );
         res.send(task);
