@@ -1,7 +1,7 @@
 <h1 align="center">To Do List</h1>
 
 <p align="center">
-    <img src="https://urlz.fr/gIoj" width="120px" />
+    <img src="https://urlz.fr/gIoj" width="700px" />
 
 </p>
 
