@@ -101,18 +101,4 @@ router.delete("/item/:id", async (req, res) => {
     }
 });
 
-router.delete("/:id", async (req, res) => {
-    try {
-        const task = await Task.findByIdAndDelete(req.params.id);
-        const items = await Item.deleteMany({task_id:req.params.id});
-        res.send(task);
-        res.send(items);
-    } catch (error) {
-        res.send(error);
-    }
-});
-
-
-
-
 module.exports = router;

@@ -21,7 +21,7 @@ class App extends Tasks {
                 <div className="App flex">
 
                     <Paper elevation={16} className="container">
-                        <div className="heading">TO-DO liste</div>
+                        <div className="heading">To Do List</div>
                         <form
                             onSubmit={this.handleTaskSubmit}
                             className="flex"
@@ -34,7 +34,7 @@ class App extends Tasks {
                                 value={this.state.currentTask}
                                 required={true}
                                 onChange={this.handleTaskChange}
-                                placeholder="Nouvelle TODO liste"
+                                placeholder="Type here for a new To Do List"
                             />
                             <Button
                                 style={{ height: "40px" }}
@@ -104,7 +104,7 @@ class App extends Tasks {
                         value={this.state.currentItem}
                         required={true}
                         onChange={this.handleItemChange}
-                        placeholder="Nouvelle tache"
+                        placeholder="Title"
                     />
                     <TextField
                         variant="outlined"
@@ -112,7 +112,7 @@ class App extends Tasks {
                         style={{ width: "80%" }}
                         value={this.state.currentDesc}
                         onChange={this.handleDescItemChange}
-                        placeholder="description"
+                        placeholder="Description"
                     />
                     <Button
                         style={{ height: "40px" }}
@@ -149,7 +149,7 @@ class App extends Tasks {
                                 -
                                 <EditText
                                     name="textbox1"
-                                    defaultValue={item.description ? item.description : "Aucune description"}
+                                    defaultValue={item.description ? item.description : "No description"}
                                     
                                 />
 
