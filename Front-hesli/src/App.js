@@ -2,81 +2,83 @@ import React from "react";
 import Tasks from "./Tasks";
 import { Paper, TextField } from "@material-ui/core";
 import { Checkbox, Button } from "@material-ui/core";
+import { EditText } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
+
 import "./App.css";
 
+
 class App extends Tasks {
-    state = { selected_task: "", tasks: [], item: [], task_id: "", currentTask: "", currentItem: "", currentDesc: "" };
+
+    state = { selected_task: "", tasks: [], item: [], task_id: "", currentTask: "", currentItem: "", currentDesc: "", modal_open: false, edit: "" };
 
     render() {
-
-
-
-
         const { tasks } = this.state;
 
         return (
 
-            <div className="App flex">
-                <Paper elevation={16} className="container">
-                    <div className="heading">TO-DO liste</div>
-                    <form
-                        onSubmit={this.handleTaskSubmit}
-                        className="flex"
-                        style={{ margin: "15px 0" }}
-                    >
-                        <TextField
-                            variant="outlined"
-                            size="small"
-                            style={{ width: "80%" }}
-                            value={this.state.currentTask}
-                            required={true}
-                            onChange={this.handleTaskChange}
-                            placeholder="Nouvelle TODO liste"
-                        />
-                        <Button
-                            style={{ height: "40px" }}
-                            color="primary"
-                            variant="outlined"
-                            type="submit"
+            <React.Fragment>
+                <div className="App flex">
+
+                    <Paper elevation={16} className="container">
+                        <div className="heading">TO-DO liste</div>
+                        <form
+                            onSubmit={this.handleTaskSubmit}
+                            className="flex"
+                            style={{ margin: "15px 0" }}
                         >
-                            Add task
-                        </Button>
-                    </form>
-                    <div>
-                        {tasks.map((task) =>
-
-                        (
-
-                            <Paper
-                                onClick={() => this.getItemTasks(task._id)}
-                                key={task._id}
-                                className="flex task_container"
+                            <TextField
+                                variant="outlined"
+                                size="small"
+                                style={{ width: "80%" }}
+                                value={this.state.currentTask}
+                                required={true}
+                                onChange={this.handleTaskChange}
+                                placeholder="Nouvelle TODO liste"
+                            />
+                            <Button
+                                style={{ height: "40px" }}
+                                color="primary"
+                                variant="outlined"
+                                type="submit"
                             >
+                                Add task
+                            </Button>
+                        </form>
+                        <div>
+                            {tasks.map((task) =>
 
-                                <div
+                            (
 
+                                <Paper
+                                    onClick={() => this.getItemTasks(task._id)}
+                                    key={task._id}
+                                    className="flex task_container"
                                 >
-                                    {task.task}
-                                </div>
-                                <Button
-                                    onClick={() => this.handleDelete(task._id)}
-                                    color="primary"
-                                >
-                                    update
-                                </Button>
-                                <Button
-                                    onClick={() => this.handleDelete(task._id)}
-                                    color="secondary"
-                                >
-                                    delete
-                                </Button>
-                            </Paper>
-                        ))}
-                    </div>
-                </Paper>
 
-                {this.renderTask()}
-            </div>
+                                    <div
+                                    >
+
+                                        <EditText
+                                            name="textbox1"
+                                            defaultValue={task.task}
+                                        />
+                                    </div>
+
+                                    <Button
+                                        onClick={() => this.handleDelete(task._id)}
+                                        color="secondary"
+                                    >
+                                        delete
+                                    </Button>
+                                </Paper>
+                            ))}
+                        </div>
+                    </Paper>
+
+                    {this.renderTask()}
+                </div>
+            </React.Fragment>
         );
 
     }
@@ -140,14 +142,19 @@ class App extends Tasks {
                                         : "task"
                                 }
                             >
-                                {item.title} -
-                                {item.description ? item.description : "Aucune description"}
+                                <EditText
+                                    name="textbox1"
+                                    defaultValue={item.title}
+                                />
+                                -
+                                <EditText
+                                    name="textbox1"
+                                    defaultValue={item.description ? item.description : "Aucune description"}
+                                    
+                                />
+
                             </div>
-                            {!item.completed ? <Button
-                                color="primary"
-                            >
-                                update
-                            </Button> : null}
+
                             <Button
                                 onClick={() => this.handleItemDelete(item._id)}
                                 color="secondary"

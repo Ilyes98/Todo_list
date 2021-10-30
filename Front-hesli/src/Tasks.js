@@ -12,8 +12,8 @@ import {
 } from "./services/taskServices";
 
 class Tasks extends Component {
-    state = { tasks: [], item: [], currentTask: "", currentItem: "", task_id: "", update_change: "", currentDesc: "" };
-
+    state = { tasks: [], item: [], currentTask: "", currentItem:"", task_id: "", update_change:"", currentDesc: ""};
+    
     async componentDidMount() {
         try {
             const { data } = await getTasks();
@@ -29,13 +29,13 @@ class Tasks extends Component {
         }
     }
 
-    getItemTasks = async (id) => {
-        try {
-            const { data } = await getItemFromTask(id);
-            this.setState({ item: data, task_id: id });
-        } catch (error) {
-            console.log(error);
-        }
+    getItemTasks = async (id) =>  {
+    try {
+        const { data } = await getItemFromTask(id);
+        this.setState({ item: data, task_id: id});
+    } catch (error) {
+        console.log(error);
+    }
     }
 
     handleTaskChange = ({ currentTarget: input }) => {
@@ -56,10 +56,10 @@ class Tasks extends Component {
         const originalTasks = this.state.tasks;
         try {
             // eslint-disable-next-line no-undef
-            const { data } = await addTask({ task: this.state.currentTask });
+            const { data } = await addTask({ task: this.state.currentTask});
             const tasks = originalTasks;
             tasks.push(data);
-            this.setState({ tasks, currentTask: "" });
+            this.setState({ tasks, currentTask: ""});
         } catch (error) {
             console.log(error);
         }
@@ -70,19 +70,19 @@ class Tasks extends Component {
         try {
 
             // eslint-disable-next-line no-undef
-            const { data } = await addItem({ title: this.state.currentItem, task_id: this.state.task_id, description: this.state.currentDesc });
+            const { data } = await addItem({title: this.state.currentItem, task_id: this.state.task_id, description: this.state.currentDesc});
             const item = originalItem;
             item.push(data);
-            this.setState({ item, currentItem: "", currentDesc: "" });
+            this.setState({ item, currentItem: "", currentDesc:"" });
         } catch (error) {
             console.log(error);
         }
     };
 
-    onItemSubmit = async (id) => {
-        console.log("voici currentItem : " + this.state.currentItem + "voici id")
+    onItemSubmit =  async (id)=>{
+        console.log("voici currentItem : "+this.state.currentItem + "voici id" )
         const originalItem = this.state.item;
-        const items = { title: this.state.currentItem, task_id: id }
+        const items = {title: this.state.currentItem, task_id:id}
         try {
 
             // eslint-disable-next-line no-undef
@@ -130,11 +130,16 @@ class Tasks extends Component {
 
     handleDelete = async (currentTask) => {
         const originalTasks = this.state.tasks;
+        const originalItem = this.state.item;
         try {
             const tasks = originalTasks.filter(
                 (task) => task._id !== currentTask
             );
+            const item = originalItem.filter(
+                (task) => task._id !== currentTask
+            );
             this.setState({ tasks });
+            this.setState({ item });
             await deleteTask(currentTask);
         } catch (error) {
             this.setState({ tasks: originalTasks });
@@ -154,6 +159,7 @@ class Tasks extends Component {
             console.log(error);
         }
     };
+
 }
 
 export default Tasks;
