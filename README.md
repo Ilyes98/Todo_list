@@ -1,7 +1,8 @@
 <h1 align="center">To Do List</h1>
 
 <p align="center">
-  <img src=".show.png" width="120px" />
+    <img src="./public/assets/show.png" width="120px" />
+
 </p>
 
 <p align="center">
@@ -20,7 +21,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Install [Node.js](https://nodejs.org) which includes [Node Package Manager](https://www.npmjs.com/get-npm)
 
-
 ### Clone the project to your local machine
 
 ```bash
@@ -37,8 +37,9 @@ npm install express mongoose cors
 
 ```bash
 npm start
-Open (http://localhost:3000) to view it on the browser.
+Open (http://localhost:3333) to view it on the browser.
 ```
+
 ### Clone the project to your local machine
 
 ```bash
@@ -51,11 +52,11 @@ cd Front-hesli
 npm install
 npm install axios @material-ui/core
 ```
-
 ### Run the application
 
 ```bash
 npm start
+Open (http://localhost:3000) to view it on the browser.
 ```
 
 ## Author
