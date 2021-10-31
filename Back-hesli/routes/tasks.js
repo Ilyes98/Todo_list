@@ -3,6 +3,7 @@ const Item = require("../models/item");
 const express = require("express");
 const router = express.Router();
 
+//post a new to do list 
 router.post("/", async (req, res) => {
     try {
         const task = await new Task(req.body).save();
@@ -12,6 +13,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+//getAll
 router.get("/", async (req, res) => {
     try {
         const tasks = await Task.find();
@@ -20,6 +22,8 @@ router.get("/", async (req, res) => {
         res.send(error);
     }
 });
+
+//get a to do list
 router.get("/:id", async (req, res) => {
     try {
         const tasks = await Task.find({ _id: req.id });
@@ -29,6 +33,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+//get an item
 router.get("/item", async (req, res) => {
     try {
         const tasks = await Item.find();
@@ -39,7 +44,7 @@ router.get("/item", async (req, res) => {
 });
 
 
-
+// post an item
 router.post("/item", async (req, res) => {
     try {
         const item = await new Item(req.body).save();
@@ -49,6 +54,8 @@ router.post("/item", async (req, res) => {
         res.send(error);
     }
 });
+
+//get an item by id
 router.get("/item/:id", async (req, res) => {
     try {
         const tasks = await Item.find({ task_id: req.params.id });
@@ -58,6 +65,7 @@ router.get("/item/:id", async (req, res) => {
     }
 });
 
+//update one item
 router.patch("/item/:id", async (req, res) => {
     try {
         const task = await Item.findOneAndUpdate(
@@ -69,6 +77,8 @@ router.patch("/item/:id", async (req, res) => {
         res.send(error);
     }
 });
+
+//update all items 
 router.put("/item/:id", async (req, res) => {
     try {
         const task = await Item.findOneAndUpdate(
@@ -80,6 +90,8 @@ router.put("/item/:id", async (req, res) => {
         res.send(error);
     }
 });
+
+//update all the to do lists
 router.put("/:id", async (req, res) => {
     try {
         const task = await Task.findOneAndUpdate(
@@ -92,6 +104,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+//delete an item 
 router.delete("/item/:id", async (req, res) => {
     try {
         const task = await Item.findByIdAndDelete(req.params.id);
@@ -101,6 +114,7 @@ router.delete("/item/:id", async (req, res) => {
     }
 });
 
+//delete a to do list
 router.delete("/:id", async (req, res) => {
     try {
         const task = await Task.findByIdAndDelete(req.params.id);

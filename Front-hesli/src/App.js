@@ -62,12 +62,14 @@ class App extends Tasks {
                                         <EditText
                                             name="textbox1"
                                             defaultValue={task.task}
+                                            style={{ right: "100px",position:"relative"}}
                                         />
                                     </div>
 
                                     <Button
                                         onClick={() => this.handleDelete(task._id)}
                                         color="secondary"
+                                        style={{ left: "120px",position:"relative"}}
                                     >
                                         delete
                                     </Button>
@@ -76,14 +78,13 @@ class App extends Tasks {
                         </div>
                     </Paper>
 
-                    {this.renderTask()}
+                    {this.renderItem()}
                 </div>
             </React.Fragment>
         );
-
     }
 
-    renderTask() {
+    renderItem() {
 
         const { item } = this.state;
         if (!item) {
@@ -124,10 +125,9 @@ class App extends Tasks {
                     </Button>
                 </form>
                 <div>
-                    {item.map((item, id) => (
+                    {item.map((item) => (
                         <Paper
-
-                            key={id}
+                            key={item._id}
                             className="flex task_container"
                         >
                             <Checkbox
@@ -150,7 +150,7 @@ class App extends Tasks {
                                 <EditText
                                     name="textbox1"
                                     defaultValue={item.description ? item.description : "No description"}
-                                    
+
                                 />
 
                             </div>

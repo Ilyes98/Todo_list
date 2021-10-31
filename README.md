@@ -31,7 +31,6 @@ cd Back-hesli
 
 ```bash
 npm install
-npm install express mongoose cors
 ```
 ### Run the application
 
@@ -50,7 +49,6 @@ cd Front-hesli
 
 ```bash
 npm install
-npm install axios @material-ui/core
 ```
 ### Run the application
 

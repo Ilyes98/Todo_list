@@ -1,7 +1,7 @@
 import axios from "axios";
 const apiUrl = "http://localhost:3333/api/tasks";
 
-// requêtes des todo vers l'api
+// to do list requests 
 export function getTasks() {
     return axios.get(apiUrl);
 }
@@ -18,7 +18,7 @@ export function deleteTask(id) {
     return axios.delete(apiUrl + "/" + id);
 }
 
-// requêtes des items vers l'api
+// items requests
 
 export function getItem() {
     return axios.post(apiUrl + "/item/");
