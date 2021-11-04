@@ -62,14 +62,14 @@ class App extends Tasks {
                                         <EditText
                                             name="textbox1"
                                             defaultValue={task.task}
-                                            style={{ right: "100px",position:"relative"}}
+                                            style={{ right: "100px", position: "relative" }}
                                         />
                                     </div>
 
                                     <Button
                                         onClick={() => this.handleDelete(task._id)}
                                         color="secondary"
-                                        style={{ left: "120px",position:"relative"}}
+                                        style={{ left: "120px", position: "relative" }}
                                     >
                                         delete
                                     </Button>
@@ -143,15 +143,18 @@ class App extends Tasks {
                                 }
                             >
                                 <EditText
+                                    readonly={item.completed ? true : false}
                                     name="textbox1"
                                     defaultValue={item.title}
                                 />
                                 -
                                 <EditText
+                                    readonly={item.completed ? true : false}
                                     name="textbox1"
                                     defaultValue={item.description ? item.description : "No description"}
 
                                 />
+
 
                             </div>
 
