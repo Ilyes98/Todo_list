@@ -4,7 +4,6 @@ import { Paper, TextField } from "@material-ui/core";
 import { Checkbox, Button } from "@material-ui/core";
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
-
 import "./App.css";
 
 
@@ -34,7 +33,7 @@ class App extends Tasks {
                                 value={this.state.currentTask}
                                 required={true}
                                 onChange={this.handleTaskChange}
-                                placeholder="Type here for a new To Do List"
+                                placeholder="Type here for a new Task To Do "
                             />
                             <Button
                                 style={{ height: "40px" }}

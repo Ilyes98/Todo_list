@@ -3,7 +3,7 @@ const Item = require("../models/item");
 const express = require("express");
 const router = express.Router();
 
-//post a new to do list 
+//post a new Task
 router.post("/", async (req, res) => {
     try {
         const task = await new Task(req.body).save();
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-//getAll
+//getAll Tasks
 router.get("/", async (req, res) => {
     try {
         const tasks = await Task.find();
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-//get a to do list
+//get a task by Id
 router.get("/:id", async (req, res) => {
     try {
         const tasks = await Task.find({ _id: req.id });
@@ -78,7 +78,7 @@ router.patch("/item/:id", async (req, res) => {
     }
 });
 
-//update all items 
+//update all items (!!)
 router.put("/item/:id", async (req, res) => {
     try {
         const task = await Item.findOneAndUpdate(
@@ -91,7 +91,7 @@ router.put("/item/:id", async (req, res) => {
     }
 });
 
-//update all the to do lists
+//update a task
 router.put("/:id", async (req, res) => {
     try {
         const task = await Task.findOneAndUpdate(
@@ -114,7 +114,7 @@ router.delete("/item/:id", async (req, res) => {
     }
 });
 
-//delete a to do list
+//delete a task 
 router.delete("/:id", async (req, res) => {
     try {
         const task = await Task.findByIdAndDelete(req.params.id);
@@ -122,6 +122,15 @@ router.delete("/:id", async (req, res) => {
     } catch (error) {
         res.send(error);
     }
+
+    try {
+        const items = await Item.deleteMany({ task_id: req.params.id });
+        res.send(items);
+    }
+    catch (error) {
+        res.send(error);
+    }
+
 });
 
 module.exports = router;
