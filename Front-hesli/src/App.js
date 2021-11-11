@@ -6,12 +6,12 @@ import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 import "./App.css";
 
-
 class App extends Tasks {
 
-    state = { selected_task: "", tasks: [], item: [], task_id: "", currentTask: "", currentItem: "", currentDesc: "", modal_open: false, edit: "" };
+    state = { tasks: [], item: [], currentTask: "", currentItem: "", currentDesc: "", task_id: "" };
 
     render() {
+
         const { tasks } = this.state;
 
         return (
@@ -33,8 +33,9 @@ class App extends Tasks {
                                 value={this.state.currentTask}
                                 required={true}
                                 onChange={this.handleTaskChange}
-                                placeholder="Type here for a new Task To Do "
+                                placeholder="Type here for a new Task"
                             />
+
                             <Button
                                 style={{ height: "40px" }}
                                 color="primary"
@@ -48,19 +49,18 @@ class App extends Tasks {
                             {tasks.map((task) =>
 
                             (
-
                                 <Paper
                                     onClick={() => this.getItemTasks(task._id)}
                                     key={task._id}
                                     className="flex task_container"
                                 >
-
                                     <div
                                     >
 
                                         <EditText
-                                            name="textbox1"
+                                            name={task._id}
                                             defaultValue={task.task}
+                                            onSave={this.handleTaskSave}
                                             style={{ right: "100px", position: "relative" }}
                                         />
                                     </div>
@@ -143,8 +143,9 @@ class App extends Tasks {
                             >
                                 <EditText
                                     readonly={item.completed ? true : false}
-                                    name="textbox1"
+                                    name={item._id}
                                     defaultValue={item.title}
+                                    onSave={this.handleItemSave}
                                 />
                                 -
                                 <EditText

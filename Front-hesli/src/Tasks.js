@@ -12,8 +12,7 @@ import {
 } from "./services/taskServices";
 
 class Tasks extends Component {
-    state = { tasks: [], item: [], currentTask: "", currentItem: "", task_id: "", update_change: "", currentDesc: "" };
-
+    state = { tasks: [], item: [], currentTask: "", currentItem: "", currentDesc: "", task_id: "", update_change: "" };
     async componentDidMount() {
         try {
             const { data } = await getTasks();
@@ -97,19 +96,26 @@ class Tasks extends Component {
         }
     };
 
-    handleTitleUpdate = async (currentTask) => {
-        const originalItem = this.state.update_change;
+    handleTaskSave = async ({ name, value, previousValue }) => {
+
         try {
-            const item = [...originalItem];
-            const index = item.findIndex((task) => task._id === currentTask);
-            item[index] = { ...item[index] };
-            item[index].task = !item[index].task;
-            this.setState({ item });
-            await updateTask(currentTask, {
-                task: item[index].task,
+
+            await updateTask(name, {
+                task: value
             });
         } catch (error) {
-            this.setState({ item: originalItem });
+            console.log(error);
+        }
+    };
+
+    handleItemSave = async ({ name, value, previousValue }) => {
+
+        try {
+
+            await updateItem(name, {
+                title: value
+            });
+        } catch (error) {
             console.log(error);
         }
     };

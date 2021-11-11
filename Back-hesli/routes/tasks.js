@@ -65,20 +65,7 @@ router.get("/item/:id", async (req, res) => {
     }
 });
 
-//update one item
-router.patch("/item/:id", async (req, res) => {
-    try {
-        const task = await Item.findOneAndUpdate(
-            req.params.id,
-            req.body
-        );
-        res.send(task);
-    } catch (error) {
-        res.send(error);
-    }
-});
-
-//update all items (!!)
+//update all items 
 router.put("/item/:id", async (req, res) => {
     try {
         const task = await Item.findOneAndUpdate(

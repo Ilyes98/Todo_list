@@ -28,13 +28,15 @@ export function addItem(items) {
     return axios.post(apiUrl + "/item", items);
 }
 
-export function getItemFromTask(id) {
-    return axios.get(apiUrl + "/item/" + id);
-}
-
 export function updateItem(id, task) {
     return axios.put(apiUrl + "/item/" + id, task);
 }
 export function deleteItem(id) {
     return axios.delete(apiUrl + "/item/" + id);
+}
+
+// get an item from a task request
+
+export function getItemFromTask(id) {
+    return axios.get(apiUrl + "/item/" + id);
 }
